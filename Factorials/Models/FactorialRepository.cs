@@ -1,12 +1,9 @@
 ﻿using Factorials.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Factorials.Models
 {
-    public class FactorialRepository: IFactorialRepository
+    public class FactorialRepository : IFactorialRepository
     {
         private readonly RepositoryContext _repository;
         public FactorialRepository(RepositoryContext repository)

@@ -1,11 +1,8 @@
 ﻿using Factorials.Interfaces;
 using Factorials.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Factorials.Controllers
 {
@@ -15,7 +12,7 @@ namespace Factorials.Controllers
         private readonly IFactorialRepository _repository;
         public FactorialController(IFactorialRepository repository)
         {
-            _repository =  repository;
+            _repository = repository;
         }
 
         [HttpGet("factorials/{n}/nearest-value")]
@@ -33,14 +30,14 @@ namespace Factorials.Controllers
         [HttpGet("factorials/{n}")]
         public IActionResult GetFactorial(int n)
         {
-            if(n < 0)
+            if (n < 0)
             {
                 return BadRequest();
             }
             var factorial = CountFactorial(n);
-            
+
             var numberFromDb = _repository.GetByNumber(n);
-            if(numberFromDb == null)
+            if (numberFromDb == null)
             {
                 var number = new Number() { Value = n, Factorial = factorial };
                 _repository.Create(number);
@@ -73,7 +70,7 @@ namespace Factorials.Controllers
         public IActionResult GetByNumber(int n)
         {
             var number = _repository.GetByNumber(n);
-            if(number == null)
+            if (number == null)
             {
                 return NotFound();
             }
@@ -82,7 +79,7 @@ namespace Factorials.Controllers
 
         private static long CountFactorial(int n)
         {
-            return (n == 0)? 1 : n * CountFactorial(n - 1);
+            return (n == 0) ? 1 : n * CountFactorial(n - 1);
         }
 
 

@@ -1,10 +1,8 @@
 using Factorials.Controllers;
 using Factorials.Interfaces;
 using Factorials.Models;
-using Factorials.Test.FakeRepositories;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using System;
 using System.Linq;
 using System.Net;
 using Xunit;
@@ -56,7 +54,7 @@ namespace Factorials.Test
         public void GetByNumber_ValidNPassed_ReturnsRightItem()
         {
             var okResult = _factorialController.GetByNumber(n) as OkObjectResult;
-            
+
             var number = Assert.IsType<Number>(okResult.Value);
             Assert.NotNull(number);
             Assert.Equal(n, number.Value);
@@ -67,7 +65,7 @@ namespace Factorials.Test
         public void GetFactorial_ValidNPassed_ReturnsOk()
         {
             var okResult = _factorialController.GetFactorial(n) as OkObjectResult;
-            
+
             //check if returns ok
             Assert.NotNull(okResult);
             Assert.Equal((int)HttpStatusCode.OK, okResult.StatusCode);
@@ -108,7 +106,7 @@ namespace Factorials.Test
             Assert.NotNull(okObjectResult);
             Assert.Equal((int)HttpStatusCode.OK, okObjectResult.StatusCode);
         }
-        
+
         [Fact]
         public void GetNumbersBetweenFactorial_ReturnsOkResult()
         {

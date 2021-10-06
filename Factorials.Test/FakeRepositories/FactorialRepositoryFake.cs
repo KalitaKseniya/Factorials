@@ -1,14 +1,11 @@
 ﻿using Factorials.Interfaces;
 using Factorials.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Factorials.Test.FakeRepositories
 {
-    public class FactorialRepositoryFake: IFactorialRepository
+    public class FactorialRepositoryFake : IFactorialRepository
     {
         private readonly List<Number> _numbersRepository;
 
